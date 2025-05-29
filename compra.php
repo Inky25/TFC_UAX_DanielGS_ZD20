@@ -1,13 +1,7 @@
-<?php
-require("conexion.php");
-
-// Obtener lista de empleados (DNI y Nombre)
+<?php 
+require("conexion.php"); //Conexión con las bases de datos para menus
 $empleados = $connection->query("SELECT DNI, Nombre, Apellidos FROM empleado");
-
-// Obtener lista de clientes (Email y Nombre)
 $clientes = $connection->query("SELECT Email, Nombre FROM cliente");
-
-// Obtener lista de productos (Código y Nombre)
 $productos = $connection->query("SELECT codigo, Nombre FROM Producto");
 ?>
 
@@ -24,11 +18,11 @@ $productos = $connection->query("SELECT codigo, Nombre FROM Producto");
     <div class="card shadow p-4">
         <h1 class="text-center text-primary">Registrar Compra</h1>
         <form action="inscompra.php" method="POST">
-            <div class="mb-3">
+            <div class="mb-3"> <!-- Menu seleccionar empleado con nombre, apellidos y DNI -->
                 <label for="IDempleado" class="form-label">Empleado</label>
                 <select name="IDempleado" id="IDempleado" class="form-select" required>
-                    <option value="" disabled selected>Selecciona un empleado</option>
-                    <?php
+                    <option value="" disabled selected>Selecciona un empleado</option> 
+                    <?php 
                     while ($emp = $empleados->fetch_assoc()) {
                         $nombreCompleto = $emp['Nombre'] . " " . $emp['Apellidos'];
                         echo "<option value='{$emp['DNI']}'>{$nombreCompleto} ({$emp['DNI']})</option>";
@@ -36,7 +30,7 @@ $productos = $connection->query("SELECT codigo, Nombre FROM Producto");
                     ?>
                 </select>
             </div>
-            <div class="mb-3">
+            <div class="mb-3"> <!-- Menu seleccionar cliente con nombre e Email -->
                 <label for="IDcliente" class="form-label">Cliente</label>
                 <select name="IDcliente" id="IDcliente" class="form-select" required>
                     <option value="" disabled selected>Selecciona un cliente</option>
@@ -47,39 +41,39 @@ $productos = $connection->query("SELECT codigo, Nombre FROM Producto");
                     ?>
                 </select>
             </div>
-            <div class="mb-3">
+            <div class="mb-3"> <!-- Fecha -->
                 <label for="Fecha" class="form-label">Fecha</label>
                 <input type="date" name="Fecha" class="form-control" required>
             </div>
 
-            <div id="productos">
+            <div id="productos"> <!-- Menu seleccionar productos -->
                 <h5>Productos</h5>
                 <div class="producto mb-3">
                     <select name="producto[]" class="form-select mb-2" required>
                         <option value="" disabled selected>Selecciona un producto</option>
                         <?php
-                        // Reset productos pointer to fetch again inside form (if needed)
                         $productos->data_seek(0);
                         while ($prod = $productos->fetch_assoc()) {
                             echo "<option value='{$prod['codigo']}'>{$prod['codigo']} - {$prod['Nombre']}</option>";
                         }
                         ?>
-                    </select>
+                    </select> <!-- Cantidad -->
                     <input type="number" name="cantidad[]" placeholder="Cantidad" class="form-control" required>
                 </div>
             </div>
 
+            <!-- Boton que ejecuta la función para añadir productos -->
             <button type="button" class="btn btn-secondary mb-3" onclick="agregarProducto()">Agregar otro producto</button>
 
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">Registrar Compra</button>
+                <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
         </form>
     </div>
 </div>
 
 <script>
-function agregarProducto() {
+function agregarProducto() { //Funcion para poder añadir más de un producto
     const productosOptions = `<?php
         $productos->data_seek(0);
         $options = '';

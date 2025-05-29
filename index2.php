@@ -11,9 +11,9 @@
 <body class="bg-light">
     <div class="container text-center mt-5">
         <div class="card shadow p-4">
-            <h1 class="mb-4 text-primary">Seleccionar Tabla</h1>
+            <h1 class="mb-4 text-primary">Seleccionar Tabla</h1> 
             <img src="zonad20.png" alt="Zona D20" class="img-fluid mx-auto d-block mb-4" style="max-width: 40%;">
-            <div class="d-flex justify-content-center gap-3">
+            <div class="d-flex justify-content-center gap-3"> <!-- Botones para seleccionar a que tabla quieres añadir datos -->
                 <a href="./compra.php" class="btn btn-primary">Compra</a>
                 <a href="./indexproducto.php" class="btn btn-primary">Producto</a>
                 <a href="./cliente.php" class="btn btn-primary">Cliente</a>
@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-        <div class="text-center mt-4">
+        <div class="text-center mt-4"> <!-- Botón que enlaza con el index.php, para retroceder -->
             <a href="index.php" class="btn btn-secondary">Volver al inicio</a>
         </div>
 </body>

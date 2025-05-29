@@ -15,11 +15,11 @@
             <p class="text-center">Inserción de Datos:</p>
             <div class="alert alert-info" role="alert">
                 <?php
-                require("conexion.php");
-                $Nombre = $_POST['Nombre'];
-                $sql = "INSERT INTO categoria (Nombre) VALUES ('".$Nombre."')";
+                require("conexion.php"); //Utiliza los datos del archivo conexion.php para conectarse a la base de datos
+                $Nombre = $_POST['Nombre']; //Guarda las respuestas del formulario del metodo post en variables
+                $sql = "INSERT INTO categoria (Nombre) VALUES ('".$Nombre."')"; //inserta estas variables en la tabla correspondiente
                 
-                if ($connection->query($sql) === TRUE) {
+                if ($connection->query($sql) === TRUE) { //muestra texto que verifica si se han insertado correctamente los datos
                     echo "<p class='text-success fw-bold'>Inserción de la categoria <strong>$Nombre</strong> correcta.</p>";
                 } else {
                     echo "<p class='text-danger fw-bold'>Fallo en la inserción.</p>";
@@ -28,7 +28,7 @@
                 ?>
             </div>
 
-            <div class="text-center mt-3">
+            <div class="text-center mt-3"> <!-- Botón que enlaza con categoría.php, para seguir añadiendo datos -->
                 <a href="categoria.php" class="btn btn-primary">Añadir otro</a>
             </div>
         </div>

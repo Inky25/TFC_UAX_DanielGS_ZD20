@@ -1,9 +1,7 @@
 <?php
-require("conexion.php");
-
+require("conexion.php"); //obtiene de la base de datos los fabricantes y las categorias para el menu desplegable
 $fabricante = $connection->query("SELECT ID, Nombre FROM Fabricante");
 $categoria = $connection->query("SELECT ID, Nombre FROM Categoria");
-
 ?>
 
 <!DOCTYPE html>
@@ -34,8 +32,8 @@ $categoria = $connection->query("SELECT ID, Nombre FROM Categoria");
                     <input type="number" placeholder="Precio" class="form-control" name="Precio" required min="0" step="0.01"/>
                 </div>
 
-                <div class="mb-3">
-                    <select name="IDcategoria" id="IDcategoria" class="form-select" required>
+                <div class="mb-3"> <!-- Menu desplegable para seleccionar categoría -->
+                    <select name="IDcategoria" class="form-select" required>
                         <option value="" disabled selected>Selecciona una categoría</option>
                         <?php while ($cat = $categoria->fetch_assoc()) {
                             echo "<option value='{$cat['ID']}'>{$cat['ID']} - {$cat['Nombre']}</option>";
@@ -43,8 +41,8 @@ $categoria = $connection->query("SELECT ID, Nombre FROM Categoria");
                     </select>
                 </div>
 
-                <div class="mb-3">
-                    <select name="IDfabricante" id="IDfabricante" class="form-select" required>
+                <div class="mb-3"> <!-- Menu desplegable para seleccionar fabricante -->
+                    <select name="IDfabricante" class="form-select" required>
                         <option value="" disabled selected>Selecciona un fabricante</option>
                         <?php while ($fab = $fabricante->fetch_assoc()) {
                             echo "<option value='{$fab['ID']}'>{$fab['ID']} - {$fab['Nombre']}</option>";

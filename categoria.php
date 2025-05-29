@@ -12,9 +12,9 @@
     <div class="container mt-5">
         <div class="card shadow p-4">
             <h1 class="text-center text-primary">Inserta los datos de la categoría</h1>
-            <form action="./inscategoria.php" method="POST" class="mt-3">
+            <form action="./inscategoria.php" method="POST" class="mt-3">  <!-- Formulario con acción POST. Enviará los datos que se inserten al fichero inscategoría.php cuando se pulse el botón -->
                 <div class="mb-3">
-                    <input type="text" placeholder="Nombre" class="form-control" name="Nombre" required maxlength="50"/>
+                    <input type="text" placeholder="Nombre" class="form-control" name="Nombre" required maxlength="50"/> <!-- Los inputs son donde se rellenará el formulario, cada uno debe tener un name distinto -->
                 </div>
                 <div class="text-center">
                     <button class="btn btn-primary">Enviar</button>
